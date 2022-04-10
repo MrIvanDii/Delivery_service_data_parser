@@ -8,6 +8,10 @@ from apiclient import discovery
 from oauth2client.service_account import ServiceAccountCredentials
 import os
 
+
+#------------------------------------------------------------------подробный разбор кода скоро выгружу-------------------------------------------
+
+
 # fake useragent
 ua = UserAgent()
 
@@ -26,6 +30,9 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name(
 httpAuth = credentials.authorize(httplib2.Http())
 
 service = discovery.build('sheets', 'v4', http=httpAuth)
+
+#---------------------------------------------------------------------------------------------------------------------------------------------
+
 
 COUNT = 25
 
@@ -59,11 +66,17 @@ def get_data(height, weight, width, length, country, zip_code):
     except Exception as ex:
         return ''
 
+    
+#---------------------------------------------------------------------------------------------------------------------------------------------    
+    
 
 def install():
     os.system('pip install -r requirements.txt')
 
 
+#---------------------------------------------------------------------------------------------------------------------------------------------    
+    
+    
 def put_data(height, weight, width, length, i, country, sheet):
 
     try:
@@ -105,6 +118,10 @@ def put_data(height, weight, width, length, i, country, sheet):
     except Exception as ex:
         return False
 
+ 
+#---------------------------------------------------------------------------------------------------------------------------------------------
+    
+    
 
 def main(sheet, column, start, end):
 
@@ -146,7 +163,11 @@ def main(sheet, column, start, end):
             time.sleep(10)
             result = put_data(height, weight, width, length, i, country, sheet)
 
+    
+#---------------------------------------------------------------------------------------------------------------------------------------------    
 
+            
+            
 if __name__ == '__main__':
 
     sheet = input('введите название таблицы: ')
